@@ -8,7 +8,7 @@ export default class SplashScreen extends Component {
             <Text> SplashScreen </Text>
             <Button
               title="Login"
-              onPress={() => this.props.navigation.navigate('BottomNavigation')}
+              onPress={() => this.props.navigation.navigate('Login')}
             />
           </SafeAreaView>
         );
