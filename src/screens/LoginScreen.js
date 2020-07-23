@@ -37,7 +37,7 @@ export class LoginScreen extends Component {
                 resizeMode="contain"
               />
               <Text style={[styles.textStyle, {fontSize: 26}]}>
-                J2Team The Movie
+                The Movie
               </Text>
             </View>
             <View style={{marginTop: 45}}>

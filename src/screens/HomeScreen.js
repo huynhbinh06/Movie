@@ -7,27 +7,65 @@ import {
   TouchableOpacity,
   View,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import {HeaderComponent} from '../components';
-import moviesData from '../assets/data.json';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default class HomeScreen extends Component {
+
+  state = {
+    upcoming: null,
+    trending: null,
+  }
+
+  componentDidMount(){
+    this.fetchData();
+  }
+
+  fetchData = async() =>{
+    let response = await fetch(
+      'https://api.themoviedb.org/3/movie/upcoming?api_key=0f5b3db603ad8df463592b0204632c4e',
+    );
+    let response2 = await fetch(
+      'https://api.themoviedb.org/3/trending/all/day?api_key=0f5b3db603ad8df463592b0204632c4e',
+    );
+    let responseJSON = await response.json();
+    let responseJSON2 = await response2.json();
+
+    // đổ dữ liệu trả về
+    this.setState({upcoming: responseJSON, trending: responseJSON2})
+
+    // console.log(responseJSON);
+  }
+
   render() {
+
+    //console.log(this.state.data);
+    if (!this.state.upcoming && !this.state.trending) {
+      return (
+        <ActivityIndicator
+          size="large"
+          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+        />
+      );
+    }
+
     return (
       <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
-        <HeaderComponent />
-
+        <HeaderComponent title="Home" />
         <View style={{height: 270}}>
           <FlatList
             horizontal
             style={{marginLeft: 21}}
-            data={moviesData.results}
+            data={this.state.upcoming.results}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate('MainDetails')}
+                  onPress={() =>
+                    this.props.navigation.navigate('MainDetails', {item})
+                  }
                   style={{flex: 1, marginRight: 18}}>
                   <View style={{flex: 1}}>
                     <Image
@@ -38,7 +76,7 @@ export default class HomeScreen extends Component {
                       resizeMode="cover"
                     />
                     <Text
-                    numberOfLines={1}
+                      numberOfLines={1}
                       style={{
                         fontSize: 12,
                         fontFamily: 'Roboto-Bold',
@@ -71,13 +109,15 @@ export default class HomeScreen extends Component {
             Trending
           </Text>
           <FlatList
-            data={moviesData.results}
+            data={this.state.trending.results}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => {
               return (
                 <TouchableOpacity
                   style={{marginBottom: 10}}
-                  onPress={() => this.props.navigation.navigate('MainDetails')}>
+                  onPress={() =>
+                    this.props.navigation.navigate('MainDetails', {item})
+                  }>
                   <View style={{flexDirection: 'row'}}>
                     <Image
                       source={{

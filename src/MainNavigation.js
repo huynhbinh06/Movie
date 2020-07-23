@@ -40,7 +40,11 @@ class HomeStack extends Component {
           component={HomeScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="MainDetails" component={DetailsScreen} />
+        <Stack.Screen
+          name="MainDetails"
+          component={DetailsScreen}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     );
   }
