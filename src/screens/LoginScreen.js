@@ -201,38 +201,39 @@ export class LoginScreen extends Component {
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={this.loginGoogle}
-                style={{
-                  width: 200,
-                  height: 40,
-                  backgroundColor: 'red',
-                  paddingHorizontal: 30,
-                  marginVertical: 15,
-                  paddingVertical: 10,
-                  borderRadius: 27,
-                }}>
-                <Text
-                  style={{color: 'black', fontSize: 13, textAlign: 'center'}}>
-                  Sign In with Google
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={this.loginFacebook}
-                style={{
-                  width: 200,
-                  height: 40,
-                  backgroundColor: 'blue',
-                  paddingHorizontal: 30,
-                  paddingVertical: 10,
-                  borderRadius: 27,
-                }}>
-                <Text
-                  style={{color: 'white', fontSize: 13, textAlign: 'center'}}>
-                  Sign In with Facebook
-                </Text>
-              </TouchableOpacity>
+              <View style={{alignItems: 'center'}}>
+                <TouchableOpacity
+                  onPress={this.loginGoogle}
+                  style={{
+                    width: 200,
+                    height: 40,
+                    backgroundColor: 'red',
+                    paddingHorizontal: 30,
+                    marginVertical: 15,
+                    paddingVertical: 10,
+                    borderRadius: 27,
+                  }}>
+                  <Text
+                    style={{color: '#FFF', fontSize: 15, textAlign: 'center',fontFamily:'Roboto-Medium'}}>
+                    Sign In with Google
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.loginFacebook}
+                  style={{
+                    width: 200,
+                    height: 40,
+                    backgroundColor: 'blue',
+                    paddingHorizontal: 30,
+                    paddingVertical: 10,
+                    borderRadius: 27,
+                  }}>
+                  <Text
+                    style={{color: '#FFF', fontSize: 14, textAlign: 'center',fontFamily:'Roboto-Medium'}}>
+                    Sign In with Facebook
+                  </Text>
+                </TouchableOpacity>
+              </View>
               <TouchableOpacity
                 style={{alignItems: 'center', marginVertical: 10}}
                 onPress={() => this.props.navigation.navigate('SignUp')}>
