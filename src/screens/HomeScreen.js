@@ -52,9 +52,9 @@ export default class HomeScreen extends Component {
     }
 
     return (
-      <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
-        <HeaderComponent title="Home" />
-        <View style={{height: 270}}>
+      <SafeAreaView style={{backgroundColor: '#060304', flex: 1}}>
+        <HeaderComponent title="Upcoming" />
+        <View style={{height: 290}}>
           <FlatList
             horizontal
             style={{marginLeft: 21}}
@@ -72,22 +72,28 @@ export default class HomeScreen extends Component {
                       source={{
                         uri: `https://image.tmdb.org/t/p/w220_and_h330_face/${item.poster_path}`,
                       }}
-                      style={{width: 150, height: 220, borderRadius: 16}}
+                      style={{width: 162, height: 243, borderRadius: 20}}
                       resizeMode="cover"
                     />
                     <Text
                       numberOfLines={1}
                       style={{
-                        fontSize: 12,
+                        fontSize: 18,
                         fontFamily: 'Roboto-Bold',
                         maxWidth: 150,
+                        color: '#FFF',
                         marginTop: 10,
                       }}>
                       {item.title || item.name}
                     </Text>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                       <Text
-                        style={{fontFamily: 'Roboto-Regular', fontSize: 12}}>
+                        style={{
+                          fontFamily: 'Roboto-Regular',
+                          color: '#FF6200',
+                          fontSize: 14,
+                          marginRight: 5,
+                        }}>
                         {item.vote_average}/10
                       </Text>
                       <FontAwesome5 name="star" size={10} color="red" />
@@ -101,10 +107,10 @@ export default class HomeScreen extends Component {
         <View style={{flex: 1, marginHorizontal: 21}}>
           <Text
             style={{
-              marginVertical: 15,
+              marginVertical: 21,
               fontFamily: 'Roboto-Bold',
               fontSize: 26,
-              color: '#001F45',
+              color: '#FFF',
             }}>
             Trending
           </Text>
@@ -135,6 +141,7 @@ export default class HomeScreen extends Component {
                       <Text
                         style={{
                           fontSize: 14,
+                          color:'#FFF',
                           fontFamily: 'Roboto-Bold',
                         }}>
                         {item.title || item.name}
@@ -143,6 +150,7 @@ export default class HomeScreen extends Component {
                         style={{
                           fontSize: 12,
                           fontFamily: 'Roboto-Bold',
+                          color:'#707070',
                           marginVertical: 8,
                         }}>
                         Release: {item.release_date || item.first_air_date}
@@ -150,6 +158,7 @@ export default class HomeScreen extends Component {
                       <Text
                         style={{
                           fontSize: 14,
+                          color: '#FFF',
                           fontFamily: 'Roboto-Light',
                         }}
                         numberOfLines={2}>

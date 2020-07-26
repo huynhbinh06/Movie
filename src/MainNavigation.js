@@ -11,7 +11,9 @@ import SplashScreen from './screens/SplashScreen';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import ChangeInfor from './screens/ChangeInfor';
 import {connect} from 'react-redux';
-
+import {bindActionCreators} from 'redux';
+import {setStatus} from './redux/userAction';
+import auth from '@react-native-firebase/auth';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,8 +71,11 @@ class BottomNavigation extends Component {
           },
         })}
         tabBarOptions={{
-          activeTintColor: '#0AB134',
-          inactiveTintColor: 'gray',
+          activeTintColor: '#FFF',
+          inactiveTintColor: '#640509',
+          style: {
+            backgroundColor: '#E1030E',
+          },
         }}>
         <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Infor" component={InforStack} />
@@ -80,6 +85,23 @@ class BottomNavigation extends Component {
 }
 
 export class MainNavigation extends Component {
+  componentDidMount() {
+    this.getUserInfor();
+  }
+
+  getUserInfor = async () => {
+    this.unsubscribe = auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.setStatus(true);
+      } else {
+        this.props.setStatus(false);
+      }
+    });
+  };
+
+  componentWillUnmount(){
+    this.unsubscribe();
+  }
 
   render() {
     return (
@@ -102,5 +124,7 @@ const mapStateToProps = (state) => ({
   isLogged: state,
 });
 
-export default connect(mapStateToProps)(MainNavigation);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({setStatus}, dispatch);
 
+export default connect(mapStateToProps, mapDispatchToProps)(MainNavigation);

@@ -22,14 +22,14 @@ export default class HeaderComponent extends Component {
           <TouchableOpacity
             style={{position: 'absolute', left: 21, top: 16}}
             onPress={() => this.props.goBack()}>
-            <FontAwesome5 name="chevron-left" size={23} color="#001F45" />
+            <FontAwesome5 name="chevron-left" size={23} color="#FFF" />
           </TouchableOpacity>
         )}
         <Text
           style={{
             fontSize: 28,
             fontFamily: 'Roboto-Bold',
-            color: '#001F45',
+            color: '#FFF',
           }}>
           {title}
         </Text>
