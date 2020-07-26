@@ -115,7 +115,7 @@ export class LoginScreen extends Component {
     const {email, password} = this.state;
 
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1, backgroundColor: '#060304'}}>
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
           <View
             style={{
@@ -129,15 +129,20 @@ export class LoginScreen extends Component {
                 style={{width: 100, height: 100}}
                 resizeMode="contain"
               />
-              <Text style={[styles.textStyle, {fontSize: 26}]}>The Movie</Text>
+              <Text style={[styles.textStyle, {fontSize: 26, color: '#FFF'}]}>
+                The Movie
+              </Text>
             </View>
             <View style={{marginTop: 45}}>
               <Text
-                style={[styles.textStyle, {fontSize: 26, textAlign: 'center'}]}>
+                style={[
+                  styles.textStyle,
+                  {fontSize: 26, textAlign: 'center', color: '#FFF'},
+                ]}>
                 Login
               </Text>
               <View style={{marginBottom: 21, marginTop: 30}}>
-                <Text>Email</Text>
+                <Text style={{color: '#FFF'}}>Email</Text>
                 <TextInput
                   placeholder="Enter your email"
                   keyboardType="email-address"
@@ -157,7 +162,7 @@ export class LoginScreen extends Component {
                 />
               </View>
               <View style={{marginBottom: 20, marginTop: 5}}>
-                <Text>Password</Text>
+                <Text style={{color: '#FFF'}}>Password</Text>
                 <TextInput
                   placeholder="Enter your Password"
                   value={password}
@@ -214,7 +219,12 @@ export class LoginScreen extends Component {
                     borderRadius: 27,
                   }}>
                   <Text
-                    style={{color: '#FFF', fontSize: 15, textAlign: 'center',fontFamily:'Roboto-Medium'}}>
+                    style={{
+                      color: '#FFF',
+                      fontSize: 15,
+                      textAlign: 'center',
+                      fontFamily: 'Roboto-Medium',
+                    }}>
                     Sign In with Google
                   </Text>
                 </TouchableOpacity>
@@ -229,7 +239,12 @@ export class LoginScreen extends Component {
                     borderRadius: 27,
                   }}>
                   <Text
-                    style={{color: '#FFF', fontSize: 14, textAlign: 'center',fontFamily:'Roboto-Medium'}}>
+                    style={{
+                      color: '#FFF',
+                      fontSize: 14,
+                      textAlign: 'center',
+                      fontFamily: 'Roboto-Medium',
+                    }}>
                     Sign In with Facebook
                   </Text>
                 </TouchableOpacity>
@@ -237,7 +252,7 @@ export class LoginScreen extends Component {
               <TouchableOpacity
                 style={{alignItems: 'center', marginVertical: 10}}
                 onPress={() => this.props.navigation.navigate('SignUp')}>
-                <Text>Don't have an account?</Text>
+                <Text style={{color: '#FFF'}}>Don't have an account? Click me!</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -257,7 +272,7 @@ export class LoginScreen extends Component {
 const styles = StyleSheet.create({
   textStyle: {
     fontFamily: 'Roboto-Bold',
-    color: '#001F45',
+    color: '#FFF',
   },
 });
 
